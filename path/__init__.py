@@ -1428,6 +1428,7 @@ class Path(str):
         try:
             perm = os.fstat(readable.fileno()).st_mode
         except OSError:
+            raise RuntimeError("reached")
             writable = self.open(
                 'w' + mode.replace('r', ''),
                 buffering=buffering,
