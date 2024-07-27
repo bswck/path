@@ -675,6 +675,7 @@ class Path(str):
     #
     # --- Reading or writing an entire file at once.
 
+    # workaround jaraco/path#231
     if TYPE_CHECKING:
         open = open
     else:
