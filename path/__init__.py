@@ -681,7 +681,7 @@ class Path(str):
     else:
         def open(self, *args, **kwargs):
             """Open this file and return a corresponding file object.
-    
+
             Keyword arguments work as in :func:`io.open`.  If the file cannot be
             opened, an :class:`OSError` is raised.
             """
