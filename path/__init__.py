@@ -679,6 +679,7 @@ class Path(str):
     if TYPE_CHECKING:
         open = open
     else:
+
         def open(self, *args, **kwargs):
             """Open this file and return a corresponding file object.
 
