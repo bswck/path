@@ -675,14 +675,16 @@ class Path(str):
     #
     # --- Reading or writing an entire file at once.
 
-    @functools.wraps(open, assigned=())
-    def open(self, *args, **kwargs):
-        """Open this file and return a corresponding file object.
-
-        Keyword arguments work as in :func:`io.open`.  If the file cannot be
-        opened, an :class:`OSError` is raised.
-        """
-        return open(self, *args, **kwargs)
+    if TYPE_CHECKING:
+        open = open
+    else:
+        def open(self, *args, **kwargs):
+            """Open this file and return a corresponding file object.
+    
+            Keyword arguments work as in :func:`io.open`.  If the file cannot be
+            opened, an :class:`OSError` is raised.
+            """
+            return open(self, *args, **kwargs)
 
     def bytes(self):
         """Open this file, read all bytes, return them as a string."""
